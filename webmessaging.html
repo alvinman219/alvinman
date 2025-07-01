@@ -1,5 +1,4 @@
 <html lang="en">
-    <div id="genesys-support-center"></div>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +6,7 @@
     <title>Web Messaging</title>
 </head>
 <body>
+    <div id="genesys-support-center"></div>
     <ul>
         <li><a href="index.html">Product Support Home Page</a></li>
     </ul>
@@ -25,20 +25,25 @@
         deploymentId: '5bf0085f-2cfd-4565-8acf-c344d3f7263d'
       });
 
-      // Wait a short time to ensure Genesys is loaded before calling
-      setTimeout(function() {
-        Genesys("command", "Database.set", {
-          messaging: {
-            customAttributes: {
-              department: "Product Support",
-              PSG_skill: "API/Integration",
-              device: "mobile",
-              Cust_Issue: "SSO login",
-              name: "John Cena"
+      // Wait for Genesys to load, then set custom attributes
+      function setGenesysCustomAttributes() {
+        if (typeof Genesys === "function") {
+          Genesys("command", "Database.set", {
+            messaging: {
+              customAttributes: {
+                department: "Product Support",
+                PSG_skill: "API/Integration",
+                device: "mobile",
+                Cust_Issue: "SSO login",
+                name: "John Cena"
+              }
             }
-          }
-        });
-      }, 1000);
+          });
+        } else {
+          setTimeout(setGenesysCustomAttributes, 500);
+        }
+      }
+      setTimeout(setGenesysCustomAttributes, 1000);
     </script>
 </body>
 </html>
