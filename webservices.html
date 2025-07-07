@@ -10,27 +10,27 @@
       "message": "Hello, world!",
       "status": "success",
       "searchRecords": [
-          {
+        {
+          "attributes": {
+            "type": "Contact",
+            "url": "/services/data/v37.0/sobjects/Contact/003aJ000004Jqa6QAC"
+          },
+          "AccountId": "0014w000043I8AmAAK",
+          "FirstName": "A",
+          "LastName": "B",
+          "Phone": "+00123456789",
+          "Account": {
             "attributes": {
-              "type": "Contact",
-              "url": "/services/data/v37.0/sobjects/Contact/003aJ000004Jqa6QAC"
+              "type": "Account",
+              "url": "/services/data/v37.0/sobjects/Account/0014w000043I8AmAAK"
             },
-            "AccountId": "0014w000043I8AmAAK",
-            "FirstName": "A",
-            "LastName": "B",
-            "Phone": "+00123456789",
-            "Account": {
-              "attributes": {
-                "type": "Account",
-                "url": "/services/data/v37.0/sobjects/Account/0014w000043I8AmAAK"
-              },
-              "svc_VIP_Override__c": true
-            }
+            "svc_VIP_Override__c": true
           }
-        ]
-      }
+        }
+      ]
     }
   </script>
+  <script>
     // Access the static JSON object in JS
     const jsonData = JSON.parse(document.getElementById('static-json').textContent);
     // Example usage: log it or use it for rendering
