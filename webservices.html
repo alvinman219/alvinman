@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Contact Data</title>
+  <title>Static JSON Example</title>
 </head>
 <body>
-  <script type="application/json" id="contact-data">
+  <!-- Embed JSON in a script tag for machine-readability -->
+  <script type="application/json" id="static-json">
     {
-      "searchRecords": [
-        {
-          "attributes": {
-            "type": "Contact",
-            "url": "/services/data/v37.0/sobjects/Contact/003aJ000004Jqa6QAC"
-          },
-          "AccountId": "0014w000043I8AmAAK",
-          "CreatedDate": "2024-09-19T13:20:37.000+0000",
-          "FirstName": "A",
-          "Id": "003aJ000004Jqa6QAC",
-          "IsDeleted": false,
-          "LastName": "B",
-          "Name": "A B",
-          "OwnerId": "0054w00000CEVtbAAH",
-          "Phone": "+00123456789",
-          "l2a_Active_Contact__c": true,
-          "svc_Support_Language_Preference_Written__c": "EN",
-          "Account": {
+      "message": "Hello, world!",
+      "status": "success",
+      "data": {
+        "searchRecords": [
+          {
             "attributes": {
-              "type": "Account",
-              "url": "/services/data/v37.0/sobjects/Account/0014w000043I8AmAAK"
+              "type": "Contact",
+              "url": "/services/data/v37.0/sobjects/Contact/003aJ000004Jqa6QAC"
             },
-            "svc_VIP_Override__c": true
+            "AccountId": "0014w000043I8AmAAK",
+            "FirstName": "A",
+            "LastName": "B",
+            "Phone": "+00123456789",
+            "Account": {
+              "attributes": {
+                "type": "Account",
+                "url": "/services/data/v37.0/sobjects/Account/0014w000043I8AmAAK"
+              },
+              "svc_VIP_Override__c": true
+            }
           }
-        }
-      ]
+        ]
+      }
     }
   </script>
   <script>
-    // Example usage: parse the JSON in JavaScript
-    const contactData = JSON.parse(document.getElementById('contact-data').textContent);
-    console.log(contactData);
+    // Access the static JSON object in JS
+    const jsonData = JSON.parse(document.getElementById('static-json').textContent);
+    // Example usage: log it or use it for rendering
+    console.log(jsonData);
+    // Optionally, show something in the HTML
+    document.body.insertAdjacentHTML(
+      'beforeend',
+      `<pre>${JSON.stringify(jsonData, null, 2)}</pre>`
+    );
   </script>
 </body>
 </html>
